@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.roalts.oops.core.TokenGenerator;
 import com.roalts.oops.send.SenderService;
+import com.skyfishjy.library.RippleBackground;
 
 
 public class TokenSenderActivity extends ActionBarActivity {
@@ -21,17 +22,25 @@ public class TokenSenderActivity extends ActionBarActivity {
     private Button generateTokenButton;
     private TextView tokenEditText;
 
+    RippleBackground ripple;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_token_sender);
 
-        startSendingButton = (Button) findViewById(R.id.startSendButton);
-        stopSendingButton = (Button) findViewById(R.id.stopSendButton);
-        generateTokenButton = (Button) findViewById(R.id.generateTokenButton);
-        tokenEditText = (TextView) findViewById(R.id.tokenEditText);
+//        startSendingButton = (Button) findViewById(R.id.startSendButton);
+//        stopSendingButton = (Button) findViewById(R.id.stopSendButton);
+//        generateTokenButton = (Button) findViewById(R.id.generateTokenButton);
+//        tokenEditText = (TextView) findViewById(R.id.tokenEditText);
 
-        updateButtons();
+//        updateButtons();
+
+        ripple = (RippleBackground) findViewById(R.id.ripple);
+
+        ripple.startRippleAnimation();
+
+        startSendingToken(null);
     }
 
     @Override
@@ -49,17 +58,23 @@ public class TokenSenderActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        stopSendingToken(null);
+    }
+
     public void startSendingToken(View view) {
         isStarted = true;
 
-        updateButtons();
-        startSenderService(tokenEditText.getText().toString());
+//        updateButtons();
+        startSenderService(String.valueOf(getIntent().getIntExtra("code",98676)));
     }
 
     public void stopSendingToken(View view) {
         isStarted = false;
 
-        updateButtons();
+//        updateButtons();
         stopSenderService();
     }
 

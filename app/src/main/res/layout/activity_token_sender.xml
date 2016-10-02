@@ -8,51 +8,72 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".TokenSenderActivity">
 
-    <TextView
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+        <!--android:text="@string/tokenSenderActivityTitleText"-->
+        <!--android:id="@+id/tokenSenderActivityTitle"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true" />-->
+
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/stopSendButtonText"-->
+        <!--android:id="@+id/stopSendButton"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:onClick="stopSendingToken" />-->
+
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/startSendButtonText"-->
+        <!--android:id="@+id/startSendButton"-->
+        <!--android:layout_above="@+id/stopSendButton"-->
+        <!--android:onClick="startSendingToken" />-->
+
+    <!--<EditText-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:hint="@string/tokenEditTextHint"-->
+        <!--android:id="@+id/tokenEditText"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_toLeftOf="@+id/generateTokenButton"-->
+        <!--android:layout_toStartOf="@+id/generateTokenButton" />-->
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/generateTokenButtonText"-->
+        <!--android:id="@+id/generateTokenButton"-->
+        <!--android:layout_alignBottom="@+id/tokenEditText"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:onClick="generateToken" />-->
+
+    <com.skyfishjy.library.RippleBackground xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ripple"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/tokenSenderActivityTitleText"
-        android:id="@+id/tokenSenderActivityTitle"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:rb_color="#0099CC"
+        app:rb_duration="3000"
+        app:rb_radius="32dp"
+        app:rb_rippleAmount="4"
+        app:rb_scale="6">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/stopSendButtonText"
-        android:id="@+id/stopSendButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="stopSendingToken" />
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/centerImage"
+            android:src="@drawable/phone1"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/startSendButtonText"
-        android:id="@+id/startSendButton"
-        android:layout_above="@+id/stopSendButton"
-        android:onClick="startSendingToken" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/tokenEditTextHint"
-        android:id="@+id/tokenEditText"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/generateTokenButton"
-        android:layout_toStartOf="@+id/generateTokenButton" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/generateTokenButtonText"
-        android:id="@+id/generateTokenButton"
-        android:layout_alignBottom="@+id/tokenEditText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="generateToken" />
+    </com.skyfishjy.library.RippleBackground>
 </RelativeLayout>

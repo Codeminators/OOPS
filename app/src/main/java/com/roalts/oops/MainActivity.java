@@ -3,16 +3,44 @@ package com.roalts.oops;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.util.Random;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
+
+    TextView ottpCode;
+    EditText mobile, amount;
+    FloatingActionButton fabSend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ottpCode = (TextView) findViewById(R.id.ottpCode);
+        fabSend = (FloatingActionButton) findViewById(R.id.fabSend);
+
+        final int code = new Random().nextInt(99999);
+        ottpCode.setText(String.valueOf(code));
+
+        mobile = (EditText) findViewById(R.id.mobileNo);
+        amount = (EditText) findViewById(R.id.amount);
+
+        fabSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, TokenSenderActivity.class);
+                intent.putExtra("code",code);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
