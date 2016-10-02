@@ -12,6 +12,8 @@ import com.roalts.oops.core.TokenGenerator;
 import com.roalts.oops.send.SenderService;
 import com.skyfishjy.library.RippleBackground;
 
+import org.w3c.dom.Text;
+
 
 public class TokenSenderActivity extends ActionBarActivity {
 
@@ -23,6 +25,7 @@ public class TokenSenderActivity extends ActionBarActivity {
     private TextView tokenEditText;
 
     RippleBackground ripple;
+    TextView status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class TokenSenderActivity extends ActionBarActivity {
 //        updateButtons();
 
         ripple = (RippleBackground) findViewById(R.id.ripple);
+        status = (TextView) findViewById(R.id.status);
 
         ripple.startRippleAnimation();
 
@@ -68,7 +72,7 @@ public class TokenSenderActivity extends ActionBarActivity {
         isStarted = true;
 
 //        updateButtons();
-        startSenderService(String.valueOf(getIntent().getIntExtra("code",98676)));
+        startSenderService(String.valueOf(getIntent().getIntExtra("amount",35)));
     }
 
     public void stopSendingToken(View view) {
