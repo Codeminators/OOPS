@@ -37,6 +37,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, TokenSenderActivity.class);
                 intent.putExtra("code",code);
+                intent.putExtra("amount",Integer.parseInt(amount.getText().toString()));
                 startActivity(intent);
             }
         });
