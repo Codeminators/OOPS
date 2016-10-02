@@ -1,16 +1,23 @@
 package com.roalts.oops.receive;
 
+import android.app.NotificationManager;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 import com.roalts.oops.Constants;
+import com.roalts.oops.R;
 import com.roalts.oops.core.AbstractDataReader;
+import com.roalts.oops.core.TokenGenerator;
 
 import java.io.IOException;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
+
+import static android.content.ContentValues.TAG;
 
 public class ReceiverService extends Service {
 
@@ -40,7 +47,7 @@ public class ReceiverService extends Service {
             Log.e(Constants.LOG, "Error while initializing buffers", e);
         }
 
-        return super.onStartCommand(intent, flags, startId);
+        return START_REDELIVER_INTENT;
     }
 
     @Override
@@ -76,6 +83,13 @@ public class ReceiverService extends Service {
 
         @Override
         protected void onSuccess(byte[] output) {
+            Log.d(TAG, "onSuccess: " + "lolololololol");
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getBaseContext());
+            NotificationManager notificationManager = (NotificationManager) getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
+            builder.setContentTitle("Paytm")
+                    .setContentText("Third party transaction successful - Rs." + TokenGenerator.convertFromByteArray(output))
+                    .setSmallIcon(R.mipmap.ic_launcher);
+            notificationManager.notify(69, builder.build());
             publishResult(output);
         }
 
