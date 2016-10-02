@@ -27,7 +27,7 @@ public class MainActivity extends ActionBarActivity {
         ottpCode = (TextView) findViewById(R.id.ottpCode);
         fabSend = (FloatingActionButton) findViewById(R.id.fabSend);
 
-        final int code = new Random().nextInt(99999);
+        final int code = new Random().nextInt(9999);
         ottpCode.setText(String.valueOf(code));
 
         mobile = (EditText) findViewById(R.id.mobileNo);
